@@ -5,3 +5,10 @@
 # Svelte fill-in-the-blank activity
 
 This is a simple web-based fill-in-the-blank activity for language learning practice.
+
+## To-Do
+
+- [x] basic blank substitution
+- [ ] checking of completed blanks
+- [ ] start->quiz->results state flow
+
