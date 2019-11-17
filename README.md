@@ -4,5 +4,4 @@
 
 # Svelte fill-in-the-blank activity
 
-This is a simple web-based fill-in-the-blank activity  for language learning practice
-
+This is a simple web-based fill-in-the-blank activity for language learning practice.
