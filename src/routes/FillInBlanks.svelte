@@ -9,7 +9,8 @@
         isPlainWord,
         blankPretext,
         blankPosttext,
-        blankText
+        blankText,
+        blankTextLength
     } from '../utils/word-work.js';
 
     let theWords = sentenceWords($sentence);
@@ -27,17 +28,30 @@
 		max-width: 650px;
 	}
 
-	#wordContainer>div {
+	.textElement {
 		display: inline-block;
 		margin: 3px 3px;
 		padding: 3px 3px 12px 3px;
 		color: red;
 		font-size: 1em;
 		background-color: chartreuse;
-
+        text-align: left;
+        user-select: none;
 		cursor: pointer;
-		/* text-shadow: 0 0 20px rgba(0,0,0,0.3); */
 	}
+
+    .inputElement {
+		display: inline-block;
+		margin: 0px 0px;
+		padding: 0px 0px 0px 0px;
+		color: red;
+		font-size: 1em;
+        font: 1em/1.25em "Times New Roman", Times, serif;
+        font-weight: bolder;
+		background-color:white;
+        text-align: center;
+	}
+
 </style>
 
 <p>{$sentence}</p>
@@ -45,12 +59,10 @@
     {#each theWords as aWord, i}
         {#if isPlainWord(aWord) }
             <!-- <div class="item">{aWord}&nbsp;-&nbsp;</div> -->
-            <div class="item">{aWord}</div>
+            <div class="textElement" id="{i}">{aWord}</div>
         {:else}
-            <div class="item">
-                {blankPretext(aWord)}
-                <input type="text" name="i">
-                {blankPosttext(aWord)}
+            <div class="textElement">
+                {blankPretext(aWord)}<input type="text" class="inputElement" id="{i}" size={blankTextLength(aWord)}>{blankPosttext(aWord)}
             </div>
         {/if}
     {/each}

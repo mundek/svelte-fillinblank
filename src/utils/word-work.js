@@ -34,3 +34,9 @@ export function blankText(someWord) {
     console.log(a);
     return a[1];
 }
+
+export function blankTextLength(someWord) {
+    let a = someWord.match(/\*(.*)\*/);
+    console.log(a);
+    return a[1].length;
+}
