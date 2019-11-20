@@ -20,39 +20,15 @@
     function currentSentence() {
         console.log("currSent");
     }
+
+    function resizeInput(event) {
+        let newLength = event.target.value.length;
+        if(newLength > 1) { event.target.size = newLength - 1; }
+        else { event.target.size = newLength; }
+        // console.table(event.target.value.length);
+    }
+
 </script>
-
-<style>
-	#wordContainer {
-		min-width: 100px;
-		max-width: 650px;
-	}
-
-	.textElement {
-		display: inline-block;
-		margin: 3px 3px;
-		padding: 3px 3px 12px 3px;
-		color: red;
-		font-size: 1em;
-		background-color: chartreuse;
-        text-align: left;
-        user-select: none;
-		cursor: pointer;
-	}
-
-    .inputElement {
-		display: inline-block;
-		margin: 0px 0px;
-		padding: 0px 0px 0px 0px;
-		color: red;
-		font-size: 1em;
-        font: 1em/1.25em "Times New Roman", Times, serif;
-        font-weight: bolder;
-		background-color:white;
-        text-align: center;
-	}
-
-</style>
 
 <p>{$sentence}</p>
 <div id="wordContainer">
@@ -62,8 +38,42 @@
             <div class="textElement" id="{i}">{aWord}</div>
         {:else}
             <div class="textElement">
-                {blankPretext(aWord)}<input type="text" class="inputElement" id="{i}" size={blankTextLength(aWord)}>{blankPosttext(aWord)}
+                {blankPretext(aWord)}<input type="text" class="inputElement" id="{i}" size=4 placeholder="..." on:input={resizeInput}>{blankPosttext(aWord)}
             </div>
         {/if}
     {/each}
 </div>
+
+
+<style>
+	#wordContainer {
+		min-width: 100px;
+		max-width: 800px;
+        /* padding: 1em 1em 1em 1em; */
+	}
+
+	.textElement {
+		display: inline-block;
+		margin: .2em .2em;
+		padding: 0em 0em .4em 0em;
+		color: #040404;
+		font-size: 1em;
+		/* background-color: #04CC04; */
+        text-align: left;
+        user-select: none;
+		cursor: pointer;
+	}
+
+    .inputElement {
+		display: inline-block;
+		margin: 0px 0px;
+		padding: 0px 0px 0px 0px;
+		color: #1010CC;
+		font-size: 1em;
+        font: "Times New Roman", Times, serif;
+        font-weight: bolder;
+		background-color:white;
+        text-align: left;
+	}
+
+</style>

@@ -4,13 +4,13 @@ export function sentenceWords(aSentence) {
 
     // let punctuatedWords = aSentence.match(/\S+/g);
     let punctuatedWords = aSentence.match(/\S+/g);
-    console.log(punctuatedWords);
+    // console.log(punctuatedWords);
     return punctuatedWords;
 }
 
 export function isPlainWord(someWord) {
     if (someWord.match(/\**\*/g)) {
-        console.log(someWord);
+        // console.log(someWord);
         return false;
     } else {
         return true;
@@ -19,24 +19,24 @@ export function isPlainWord(someWord) {
 
 export function blankPretext(someWord) {
     let a = someWord.match(/^[^\*]*/);
-    console.log(a);
+    // console.log(a);
     return a;
 }
 
 export function blankPosttext(someWord) {
     let a = someWord.match(/[^\*]*$/);
-    console.log(a);
+    // console.log(a);
     return a;
 }
 
 export function blankText(someWord) {
     let a = someWord.match(/\*(.*)\*/);
-    console.log(a);
+    // console.log(a);
     return a[1];
 }
 
 export function blankTextLength(someWord) {
     let a = someWord.match(/\*(.*)\*/);
-    console.log(a);
+    // console.log(a);
     return a[1].length;
 }
