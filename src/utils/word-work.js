@@ -31,7 +31,7 @@ export function blankPosttext(someWord) {
 
 export function blankText(someWord) {
     let a = someWord.match(/\*(.*)\*/);
-    // console.log(a);
+    // console.log(a[1]);
     return a[1];
 }
 
