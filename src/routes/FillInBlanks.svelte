@@ -15,13 +15,15 @@
 
     let theWords = sentenceWords($sentence);
 
-    let inputTextStrings = [];
+    let answerKey = [];
 
     function currentSentence() {
         console.log("currSent");
     }
 
     function resizeInput(event) {
+        event.target.classList.remove("correctResponse");
+        event.target.classList.remove("incorrectResponse");
         let newLength = event.target.value.length;
         if(newLength > 1) {
             event.target.size = newLength - 1;
@@ -32,29 +34,29 @@
     }
 
     function setInputWord(index, answerText) {
-        // console.log(index);
-        inputTextStrings[index] = blankText(answerText);
+        // Is this a hack? This func returns an empty string so that nothing is output in a svelte {#if}{/if} block within local HTML, _but_ the array of answers gets built along with the text input UI elements.
+        answerKey[index] = blankText(answerText);
 
-        // console.log(index, answerText);
         return "";
     }
 
     function checkAnswers(event) {
+        // get NodeList of current state of all of the text input elements
         let theBlanks = document.getElementsByClassName('inputElement');
+
         for (let item of theBlanks) {
-            // console.log(item.id, item.value);
-            if (item.value === inputTextStrings[item.id]) {
-                console.log("MATCH");
+            // if current answer key is a multi-element array (more than one correct answer), attempt to match value of current text input value against a String built by joining the answer key array with a pipe character
+            let isMatched = answerKey[item.id].join("|").indexOf(item.value);
+            if(item.value && (isMatched > -1)) {
+                // console.log("MATCH");
                 item.classList.remove("incorrectResponse")
                 item.classList.add("correctResponse")
             } else {
-                console.log("NO MATCH");
+                // console.log("NO MATCH");
                 item.classList.remove("correctResponse")
                 item.classList.add("incorrectResponse")
             }
         }
-
-        // console.table(inputTextStrings);
     }
 </script>
 

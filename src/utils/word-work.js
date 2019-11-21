@@ -31,8 +31,11 @@ export function blankPosttext(someWord) {
 
 export function blankText(someWord) {
     let a = someWord.match(/\*(.*)\*/);
-    // console.log(a[1]);
-    return a[1];
+    // console.log(a[1].split("|"));
+    // NOTE: a[0] is the matched string, including the enclosing '*' characters, while a[1] is only the portion in the captured bit in the middle
+
+    // split text on 'pipe' character, if any
+    return a[1].split("|");
 }
 
 export function blankTextLength(someWord) {
