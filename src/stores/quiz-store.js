@@ -1,6 +1,16 @@
-import { readable, writable } from 'svelte/store';
+import { writable } from 'svelte/store';
 
-export const sentence = writable(`Costa Rica, oficialmente República de Costa Rica, es *una* nación soberana, organizada como *una* república presidencialista unitaria compuesta por 7 provincias. Ubicada en América Central, posee *un* territorio con *un* área total de 51 100 km². Limita con Nicaragua a*l* norte, *el* mar Caribe a*l* este, Panamá a*l* sureste y *el|un* océano Pacífico a*l* oeste. En cuanto a *los* bordes marítimos, colinda con Panamá, Nicaragua, Colombia y Ecuador. Cuenta con 5 057 000  habitantes según su última proyección demográfica. Su capital, centro político y económico es San José, y su idioma oficial es *el* español.
-`);
+export let sentence = writable(`TEXT *IS* NOT SET`);
+export let answerKey = writable([]);
+// start at 1 for human-readable indices in each of the text inputs' placeholders
+export let answerKeyCounter = writable(1);
 
-export const currentResponse = writable("");
+export function setQuizText(aText) {
+    if(aText) {
+        sentence.set(aText);
+    } else {
+        sentence.set(`TEXT *IS* NOT SET`);
+    }
+    answerKey.set([]);
+    answerKeyCounter.set(1);
+}
