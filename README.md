@@ -9,6 +9,6 @@ This is a simple web-based fill-in-the-blank activity for language learning prac
 ## To-Do
 
 - [x] basic blank substitution
-- [ ] checking of completed blanks
+- [x] checking of completed blanks
 - [ ] start->quiz->results state flow
 
