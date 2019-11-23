@@ -17,10 +17,10 @@
     } from '../utils/word-work.js';
 
     // set currentText for devo purposes; eventually, currentText will be set from an array of texts in quiz-store.js, allowing for multi-item quizzing
-    let currentText = `Costa Rica, oficialmente República de Costa Rica, es *una* nación soberana, organizada como *una* república presidencialista unitaria compuesta por 7 provincias. Ubicada en América Central, posee *un* territorio con *un* área total de 51 100 km². Limita con Nicaragua a*l* norte, *el* mar Caribe a*l* este, Panamá a*l* sureste y *el|un* océano Pacífico a*l* oeste. En cuanto a *los* bordes marítimos, colinda con Panamá, Nicaragua, Colombia y Ecuador. Cuenta con 5 057 000  habitantes según su última proyección demográfica. Su capital, centro político y económico es San José, y su idioma oficial es *el* español.
-    `;
+    let currentText = `Costa Rica, oficialmente República de Costa Rica, es *una* nación soberana, organizada como *una* república presidencialista unitaria compuesta por 7 provincias. Ubicada en América Central, posee *un* territorio con *un* área total de 51 100 km². Limita con Nicaragua a*l* norte, *el* mar Caribe a*l* este, Panamá a*l* sureste y *el|un* océano Pacífico a*l* oeste. En cuanto a *los* bordes marítimos, colinda con Panamá, Nicaragua, Colombia y Ecuador. Cuenta con 5 057 000  habitantes según su última proyección demográfica. Su capital, centro político y económico es San José, y su idioma oficial es *el* español.`;
     setQuizText(currentText);
 
+    const LOCK_CORRECT = true; // if true, only incorrect answers may be changed after checkAnswers() has been called
     const EMPTY_LENGTH = 4; // length of empty text inputs
     let theWords = textWords($sentence); // parse text into words
 
@@ -65,6 +65,7 @@
                 // visually indicate matched response
                 item.classList.remove("incorrectResponse")
                 item.classList.add("correctResponse")
+                item.disabled = LOCK_CORRECT;
             } else {
                 // visually indicate unmatched response
                 item.classList.remove("correctResponse")
